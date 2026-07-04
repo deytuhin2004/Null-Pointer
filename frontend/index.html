@@ -53,7 +53,6 @@
             color: white;
         }
 
-        /* Main Content Style */
         .main-content {
             flex: 1;
             padding: 30px;
@@ -78,7 +77,6 @@
             display: block;
         }
 
-        /* Card/Table Styles */
         .card {
             background: white;
             padding: 20px;
@@ -104,7 +102,6 @@
             color: #333;
         }
 
-        /* Form Styles */
         .form-group {
             margin-bottom: 15px;
         }
@@ -292,15 +289,12 @@
 
     <script>
         function openTab(tabId) {
-            // Hide all tab contents
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            // Remove active status from all navigation buttons
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(button => button.classList.remove('active'));
 
-            // Display target tab content and set active state on the button
             document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
         }
