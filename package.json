@@ -1,0 +1,24 @@
+{
+  "name": "null-pointer",
+  "version": "1.0.0",
+  "description": "The purpose of this project is to define and implement the functional and non-functional requirements of a Human Resource Management System (HRMS).  \r The system aims to digitize and streamline core HR operations such as:\r - Employee onboarding\r - Profile management\r - Attendance tracking\r - Leave and time-off management\r - Payroll visibility\r - Approval workflows for admins and HR officers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deytuhin2004/Null-Pointer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/deytuhin2004/Null-Pointer/issues"
+  },
+  "homepage": "https://github.com/deytuhin2004/Null-Pointer#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
