@@ -52,4 +52,3 @@ The HRMS will provide:
 - Tuhin Dey  
 - Ankita Paul  
 - Prisha Chakrabarti  
-- Dibiya Gorai 
