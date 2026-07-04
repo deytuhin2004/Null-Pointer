@@ -51,5 +51,4 @@ The HRMS will provide:
 ## 5. Team Members
 - Tuhin Dey  
 - Ankita Paul  
-- Prisha Chakrabarti  
-- Dibiya Gorai 
+- Prisha Chakrabarty
