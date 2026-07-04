@@ -1,39 +1,66 @@
 const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+const path = require('path');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname)));
 
-// In-memory Database (Prototype er jonno)
-let hospitalResources = {
-    beds: { total: 100, available: 45 },
-    doctors: { total: 30, onDuty: 12 },
-    oxygenCylinders: { total: 50, available: 20 }
-};
+let employees = [
+    { id: "EMP001", name: "John Doe", department: "IT / Software", role: "Senior Developer", salary: 5000, checkIn: "09:15 AM", status: "Present", bonus: 500 },
+    { id: "EMP002", name: "Jane Smith", department: "Human Resources", role: "HR Manager", salary: 4500, checkIn: "09:30 AM", status: "Present", bonus: 400 },
+    { id: "EMP003", name: "Alex Johnson", department: "Marketing", role: "Designer", salary: 3500, checkIn: "-", status: "Absent", bonus: 0 }
+];
 
-// GET Route: Resource data fetch korar jonno
-app.get('/api/resources', (req, res) => {
-    res.json(hospitalResources);
+app.get('/api/employees', (req, res) => {
+    res.json(employees);
 });
 
-// POST Route: Resource data update korar jonno
-app.post('/api/resources/update', (req, res) => {
-    const { type, field, value } = req.body;
-    
-    if (hospitalResources[type] && hospitalResources[type][field] !== undefined) {
-        hospitalResources[type][field] = parseInt(value) || 0;
-        return res.json({ success: true, message: "Resource updated successfully!", data: hospitalResources });
+app.post('/api/employees', (req, res) => {
+    const { name, department, role, salary } = req.body;
+
+    if (!name || !department) {
+        return res.status(400).json({ error: "Name and Department are required fields." });
     }
+
+    const newId = `EMP${String(employees.length + 1).padStart(3, '0')}`;
     
-    return res.status(400).json({ success: false, message: "Invalid resource type or field." });
+    const newEmployee = {
+        id: newId,
+        name: name,
+        department: department,
+        role: role || "Staff",
+        salary: Number(salary) || 3000,
+        checkIn: "09:00 AM",
+        status: "Present",
+        bonus: 0
+    };
+
+    employees.push(newEmployee);
+    res.status(201).json({ message: "Employee added successfully!", employee: newEmployee });
 });
 
-// Server Start
-app.listen(PORT, '0.0.0.0', () => { 
-    console.log(`Server running on http://0.0.0.0:${PORT}`); 
+app.get('/api/dashboard/summary', (req, res) => {
+    const total = employees.length;
+    const present = employees.filter(emp => emp.status === "Present").length;
+    const absent = employees.filter(emp => emp.status === "Absent").length;
+
+    res.json({
+        totalEmployees: total,
+        presentToday: present,
+        leaveRequests: absent
+    });
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.listen(PORT, () => {
+    console.log(`🚀 HRMS Server running on: http://localhost:${PORT}`);
 });
