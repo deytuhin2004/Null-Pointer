@@ -1,0 +1,66 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "employee_id": "EMP-2026-0891",
+      "first_name": "Alex",
+      "last_name": "Morgan",
+      "email": "alex.morgan@company.com",
+      "phone": "+1-555-0198",
+      "date_of_birth": "1992-04-15",
+      "department": "Engineering",
+      "role": "Software Engineer",
+      "status": "Active",
+      "joining_date": "2024-02-10",
+      "manager_id": "EMP-2022-0042",
+      "base_salary": 95000,
+      "currency": "USD",
+      "pay_period": "Monthly",
+      "bank_account_number": "********1234"
+    }
+  ],
+  "attendance": [
+    {
+      "id": 1,
+      "record_id": "ATT-99201",
+      "employee_id": "EMP-2026-0891",
+      "attendance_date": "2026-07-03",
+      "check_in": "2026-07-03T09:02:15Z",
+      "check_out": "2026-07-03T17:30:00Z",
+      "status": "Present",
+      "total_hours": 8.46
+    }
+  ],
+  "leaveRequests": [
+    {
+      "id": 1,
+      "leave_id": "LR-2026-004",
+      "employee_id": "EMP-2026-0891",
+      "leave_type": "Vacation",
+      "start_date": "2026-08-10",
+      "end_date": "2026-08-14",
+      "total_days": 5,
+      "reason": "Family trip",
+      "status": "Pending"
+    }
+  ],
+  "approvalWorkflows": [
+    {
+      "id": 1,
+      "workflow_id": "WF-88301",
+      "entity_type": "LeaveRequest",
+      "entity_id": "LR-2026-004",
+      "current_approver_id": "EMP-2022-0042",
+      "stage": 1,
+      "status": "Pending",
+      "history": [
+        {
+          "approverId": "EMP-2022-0042",
+          "action": "Pending",
+          "timestamp": "2026-07-04T08:15:00Z",
+          "comments": ""
+        }
+      ]
+    }
+  ]
+}
